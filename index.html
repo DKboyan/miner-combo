@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芯片选择主页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button {
+            margin: 20px;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #backButton {
+            margin: 20px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>芯片选择主页</h1>
+    <div id="menu">
+        <button class="button" onclick="loadPage('S21Pro.html')">S21Pro芯片选择</button>
+        <button class="button" onclick="loadPage('XP.html')">XP芯片选择</button>
+        <button class="button" onclick="loadPage('S21T21.html')">S21T21芯片选择</button>
+    </div>
+    <button id="backButton" onclick="goBack()">返回选择首页</button>
+    <iframe id="contentFrame"></iframe>
+
+    <script>
+        function loadPage(page) {
+            document.getElementById("menu").style.display = "none";
+            document.getElementById("contentFrame").src = page;
+            document.getElementById("backButton").style.display = "block";
+        }
+
+        function goBack() {
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("contentFrame").src = "";
+            document.getElementById("backButton").style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芯片选择界面</title>
+    <style>
+        table {
+            width: 95%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #aaa;
+        }
+        .header {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+        .chip {
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+        .chip.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .label-cell {
+            background-color: #ffcc99;
+            font-weight: bold;
+        }
+        #submitButton {
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">芯片选择界面</h1>
+    <button id="submitButton">完成选择</button>
+    <table id="chipTable">
+        <!--第一行-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th class="header">EEPROM</th>
+            <th class="header">电平转换</th>
+            <th class="header">时钟供电</th>
+            <th class="header">温感1</th>
+            <th class="header">温感2</th>
+            <th class="header">升压IC</th>
+            <th class="header">小升压二极管</th>
+            <th class="header">大升压二极管</th>
+            <th class="header">升压电容</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+       
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U6">U6</td>
+            <td class="chip" id="U2">U2</td>
+            <td class="chip" id="U10">U10</td>
+            <td class="chip" id="U7">U7</td>
+            <td class="chip" id="U5">U5</td>
+            <td class="chip" id="U11">U11</td>
+            <td class="chip" id="D4">D4</td>
+            <td class="chip" id="D5">D5</td>
+            <td class="chip" id="EC5">EC5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第二行 -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="1AC">1AC</td>
+            <td class="header" id="2AC">2AC</td>
+            <td class="header" id="3AC">3AC</td>
+            <td class="header" id="4AC">4AC</td>
+            <td class="header" id="5AC">5AC</td>
+            <td class="header" id="6AC">6AC</td>
+            <td class="header" id="7AC">7AC</td>
+            <td class="header" id="8AC">8AC</td>
+            <td class="header" id="9AC">9AC</td>
+            <td class="header" id="10AC">10AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">信号放大器</td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U152">U152</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U12">U12</td>
+            <td class="chip" id="U178">U178</td>
+            <td class="chip" id="U13">U13</td>
+            <td class="chip" id="U24">U24</td>
+            <td class="chip" id="U35">U35</td>
+            <td class="chip" id="U46">U46</td>
+            <td class="chip" id="U57">U57</td>
+            <td class="chip" id="U68">U68</td>
+            <td class="chip" id="U72">U72</td>
+            <td class="chip" id="U73">U73</td>
+            <td></td>
+            <td class="chip" id="U130">U130</td>
+            <td class="chip" id="U129">U129</td>
+            <td></td>
+            <td class="chip" id="U68">U168</td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第三行 -->
+        <tr>
+            <td class="label-cell">信号放大器</td>
+            <td></td>
+            <td class="label-cell">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="20AC">20AC</td>
+            <td class="header" id="19AC">19AC</td>
+            <td class="header" id="18AC">18AC</td>
+            <td class="header" id="17AC">17AC</td>
+            <td class="header" id="16AC">16AC</td>
+            <td class="header" id="15AC">15AC</td>
+            <td class="header" id="14AC">14AC</td>
+            <td class="header" id="13AC">13AC</td>
+            <td class="header" id="12AC">12AC</td>
+            <td class="header" id="11AC">11AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="chip" id="U169">U169</td>
+            <td></td>
+            <td class="chip" id="U151">U151</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U75">U75</td>
+            <td class="chip" id="U182">U182</td>
+            <td class="chip" id="U76">U76</td>
+            <td class="chip" id="U87">U87</td>
+            <td class="chip" id="U98">U98</td>
+            <td class="chip" id="U109">U109</td>
+            <td class="chip" id="U120">U120</td>
+            <td class="chip" id="U125">U125</td>
+            <td class="chip" id="U126">U126</td>
+            <td class="chip" id="U127">U127</td>
+            <td></td>
+            <td class="chip" id="U132">U132</td>
+            <td class="chip" id="U131">U131</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <!--第四行-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="21AC">21AC</td>
+            <td class="header" id="22AC">22AC</td>
+            <td class="header" id="23AC">23AC</td>
+            <td class="header" id="24AC">24AC</td>
+            <td class="header" id="25AC">25AC</td>
+            <td class="header" id="26AC">26AC</td>
+            <td class="header" id="27AC">27AC</td>
+            <td class="header" id="28AC">28AC</td>
+            <td class="header" id="29AC">29AC</td>
+            <td class="header" id="30AC">30AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">信号放大器</td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U153">U153</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U74">U74</td>
+            <td class="chip" id="U187">U187</td>
+            <td class="chip" id="U14">U14</td>
+            <td class="chip" id="U15">U15</td>
+            <td class="chip" id="U16">U16</td>
+            <td class="chip" id="U17">U17</td>
+            <td class="chip" id="U18">U18</td>
+            <td class="chip" id="U19">U19</td>
+            <td class="chip" id="U20">U20</td>
+            <td class="chip" id="U21">U21</td>
+            <td></td>
+            <td class="chip" id="U134">U134</td>
+            <td class="chip" id="U133">U133</td>
+            <td></td>
+            <td class="chip" id="U170">U170</td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第5行 -->
+        <tr>
+            <td class="label-cell">信号放大器</td>
+            <td></td>
+            <td class="label-cell">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="40AC">40AC</td>
+            <td class="header" id="39AC">39AC</td>
+            <td class="header" id="38AC">38AC</td>
+            <td class="header" id="37AC">37AC</td>
+            <td class="header" id="36AC">36AC</td>
+            <td class="header" id="35AC">35AC</td>
+            <td class="header" id="34AC">34AC</td>
+            <td class="header" id="33AC">33AC</td>
+            <td class="header" id="32AC">32AC</td>
+            <td class="header" id="31AC">31AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="chip" id="U171">U171</td>
+            <td></td>
+            <td class="chip" id="U154">U154</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U128">U128</td>
+            <td class="chip" id="U183">U183</td>
+            <td class="chip" id="U77">U77</td>
+            <td class="chip" id="U78">U78</td>
+            <td class="chip" id="U79">U79</td>
+            <td class="chip" id="U80">U80</td>
+            <td class="chip" id="U81">U81</td>
+            <td class="chip" id="U82">U82</td>
+            <td class="chip" id="U83">U83</td>
+            <td class="chip" id="U84">U84</td>
+            <td></td>
+            <td class="chip" id="U136">U136</td>
+            <td class="chip" id="U135">U135</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <!--第6行-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="41AC">41AC</td>
+            <td class="header" id="42AC">42AC</td>
+            <td class="header" id="43AC">43AC</td>
+            <td class="header" id="44AC">44AC</td>
+            <td class="header" id="45AC">45AC</td>
+            <td class="header" id="46AC">46AC</td>
+            <td class="header" id="47AC">47AC</td>
+            <td class="header" id="48AC">48AC</td>
+            <td class="header" id="49AC">49AC</td>
+            <td class="header" id="50AC">50AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">信号放大器</td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U155">U155</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U22">U22</td>
+            <td class="chip" id="U179">U179</td>
+            <td class="chip" id="U23">U23</td>
+            <td class="chip" id="U25">U25</td>
+            <td class="chip" id="U26">U26</td>
+            <td class="chip" id="U27">U27</td>
+            <td class="chip" id="U28">U28</td>
+            <td class="chip" id="U29">U29</td>
+            <td class="chip" id="U42">U42</td>
+            <td class="chip" id="U43">U43</td>
+            <td></td>
+            <td class="chip" id="U138">U134</td>
+            <td class="chip" id="U137">U133</td>
+            <td></td>
+            <td class="chip" id="U170">U172</td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第7行 -->
+        <tr>
+            <td class="label-cell">信号放大器</td>
+            <td></td>
+            <td class="label-cell">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="60AC">60AC</td>
+            <td class="header" id="59AC">59AC</td>
+            <td class="header" id="58AC">58AC</td>
+            <td class="header" id="57AC">57AC</td>
+            <td class="header" id="56AC">56AC</td>
+            <td class="header" id="55AC">55AC</td>
+            <td class="header" id="54AC">54AC</td>
+            <td class="header" id="53AC">53AC</td>
+            <td class="header" id="52AC">52AC</td>
+            <td class="header" id="51AC">51AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="chip" id="U173">U173</td>
+            <td></td>
+            <td class="chip" id="U156">U156</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U85">U85</td>
+            <td class="chip" id="U84">U84</td>
+            <td class="chip" id="U86">U86</td>
+            <td class="chip" id="U88">U88</td>
+            <td class="chip" id="U89">U89</td>
+            <td class="chip" id="U90">U90</td>
+            <td class="chip" id="U91">U91</td>
+            <td class="chip" id="U92">U92</td>
+            <td class="chip" id="U105">U105</td>
+            <td class="chip" id="U106">U106</td>
+            <td></td>
+            <td class="chip" id="U140">U140</td>
+            <td class="chip" id="U139">U139</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <!--第8行-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="61AC">61AC</td>
+            <td class="header" id="62AC">62AC</td>
+            <td class="header" id="63AC">63AC</td>
+            <td class="header" id="64AC">64AC</td>
+            <td class="header" id="65AC">65AC</td>
+            <td class="header" id="66AC">66AC</td>
+            <td class="header" id="67AC">67AC</td>
+            <td class="header" id="68AC">68AC</td>
+            <td class="header" id="69AC">69AC</td>
+            <td class="header" id="70AC">70AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">信号放大器</td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U157">U157</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U32">U32</td>
+            <td class="chip" id="U188">U188</td>
+            <td class="chip" id="U33">U33</td>
+            <td class="chip" id="U34">U34</td>
+            <td class="chip" id="U36">U36</td>
+            <td class="chip" id="U37">U37</td>
+            <td class="chip" id="U38">U38</td>
+            <td class="chip" id="U39">U39</td>
+            <td class="chip" id="U52">U52</td>
+            <td class="chip" id="U53">U53</td>
+            <td></td>
+            <td class="chip" id="U142">U142</td>
+            <td class="chip" id="U141">U141</td>
+            <td></td>
+            <td class="chip" id="U174">U174</td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第9行 -->
+        <tr>
+            <td class="label-cell">信号放大器</td>
+            <td></td>
+            <td class="label-cell">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="80AC">80AC</td>
+            <td class="header" id="79AC">79AC</td>
+            <td class="header" id="78AC">78AC</td>
+            <td class="header" id="77AC">77AC</td>
+            <td class="header" id="76AC">76AC</td>
+            <td class="header" id="75AC">75AC</td>
+            <td class="header" id="74AC">74AC</td>
+            <td class="header" id="73AC">73AC</td>
+            <td class="header" id="72AC">72AC</td>
+            <td class="header" id="71AC">71AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="chip" id="U175">U175</td>
+            <td></td>
+            <td class="chip" id="U158">U158</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U95">U95</td>
+            <td class="chip" id="U85">U85</td>
+            <td class="chip" id="U96">U96</td>
+            <td class="chip" id="U97">U97</td>
+            <td class="chip" id="U99">U99</td>
+            <td class="chip" id="U100">U100</td>
+            <td class="chip" id="U101">U101</td>
+            <td class="chip" id="U102">U102</td>
+            <td class="chip" id="U103">U103</td>
+            <td class="chip" id="U104">U104</td>
+            <td></td>
+            <td class="chip" id="U140">U144</td>
+            <td class="chip" id="U139">U143</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <!--第10行-->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="81AC">81AC</td>
+            <td class="header" id="82AC">82AC</td>
+            <td class="header" id="83AC">83AC</td>
+            <td class="header" id="84AC">84AC</td>
+            <td class="header" id="85AC">85AC</td>
+            <td class="header" id="86AC">86AC</td>
+            <td class="header" id="87AC">87AC</td>
+            <td class="header" id="88AC">88AC</td>
+            <td class="header" id="89AC">89AC</td>
+            <td class="header" id="90AC">90AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">信号放大器</td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="chip" id="U159">U159</td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U30">U30</td>
+            <td class="chip" id="U180">U180</td>
+            <td class="chip" id="U31">U31</td>
+            <td class="chip" id="U44">U44</td>
+            <td class="chip" id="U45">U45</td>
+            <td class="chip" id="U47">U47</td>
+            <td class="chip" id="U48">U48</td>
+            <td class="chip" id="U49">U49</td>
+            <td class="chip" id="U50">U50</td>
+            <td class="chip" id="U51">U51</td>
+            <td></td>
+            <td class="chip" id="U146">U146</td>
+            <td class="chip" id="U145">U145</td>
+            <td></td>
+            <td class="chip" id="U176">U176</td>
+        </tr>
+        <tr>
+            <td></td>
+          
+        </tr>
+        <!-- 第11行 -->
+        <tr>
+            <td class="label-cell">信号放大器</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="100AC">100AC</td>
+            <td class="header" id="99AC">99AC</td>
+            <td class="header" id="98AC">98AC</td>
+            <td class="header" id="97AC">97AC</td>
+            <td class="header" id="96AC">96AC</td>
+            <td class="header" id="95AC">95AC</td>
+            <td class="header" id="94AC">94AC</td>
+            <td class="header" id="93AC">93AC</td>
+            <td class="header" id="92AC">92AC</td>
+            <td class="header" id="91AC">91AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">八脚供电管</td>
+        </tr>
+        <tr>
+            <td class="chip" id="U177">U177</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U93">U93</td>
+            <td class="chip" id="U186">U186</td>
+            <td class="chip" id="U94">U94</td>
+            <td class="chip" id="U107">U107</td>
+            <td class="chip" id="U108">U108</td>
+            <td class="chip" id="U110">U110</td>
+            <td class="chip" id="U111">U111</td>
+            <td class="chip" id="U112">U112</td>
+            <td class="chip" id="U113">U113</td>
+            <td class="chip" id="U114">U114</td>
+            <td></td>
+            <td class="chip" id="U162">U162</td>
+            <td class="chip" id="U164">U164</td>
+            <td></td>
+            <td class="chip" id="U163">U163</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <!-- 第12行 -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="1" class="label-cell">芯片序号</td>
+            <td class="header" id="101AC">101AC</td>
+            <td class="header" id="102AC">102AC</td>
+            <td class="header" id="103AC">103AC</td>
+            <td class="header" id="104AC">104AC</td>
+            <td class="header" id="105AC">105AC</td>
+            <td class="header" id="106AC">106AC</td>
+            <td class="header" id="107AC">107AC</td>
+            <td class="header" id="108AC">108AC</td>
+            <td class="header" id="109AC">109AC</td>
+            <td class="header" id="110AC">110AC</td>
+            <td></td>
+            <td class="label-cell" rowspan="1">0.8位号</td>
+            <td class="label-cell" rowspan="1">1.2位号</td>
+            <td></td>
+            <td colspan="1" class="label-cell">八脚供电管</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="label-cell">芯片位号</td>
+            <td class="chip" id="U40">U40</td>
+            <td class="chip" id="U81">U81</td>
+            <td class="chip" id="U41">U41</td>
+            <td class="chip" id="U54">U54</td>
+            <td class="chip" id="U55">U55</td>
+            <td class="chip" id="U56">U56</td>
+            <td class="chip" id="U58">U58</td>
+            <td class="chip" id="U59">U59</td>
+            <td class="chip" id="U60">U60</td>
+            <td class="chip" id="U61">U61</td>
+            <td></td>
+            <td class="chip" id="U165">U165</td>
+            <td class="chip" id="U167">U167</td>
+            <td></td>
+            <td class="chip" id="U166">U166</td>
+        </tr>
+  
+    </table>
+    
+    <script>
+        const selectedChips = [];
+        document.querySelectorAll(".chip").forEach(cell => {
+            cell.addEventListener("click", () => {
+                cell.classList.toggle("selected");
+                const chipId = cell.id;
+                if (selectedChips.includes(chipId)) {
+                    const index = selectedChips.indexOf(chipId);
+                    selectedChips.splice(index, 1);
+                } else {
+                    selectedChips.push(chipId);
+                }
+                console.log("已选择芯片:", selectedChips);
+            });
+        });
+        document.getElementById("submitButton").addEventListener("click", () => {
+            if (selectedChips.length === 0) {
+                alert("请先选择至少一个芯片！");
+                return;
+            }
+            const chipList = selectedChips.join(", ");
+            navigator.clipboard.writeText(chipList).then(() => {
+                alert(`已选择芯片位号: ${chipList}\n\n芯片位号已复制到剪贴板，您可以在简道云表单中粘贴。`);
+                resetSelection();
+            }).catch(err => {
+                console.error('复制失败:', err);
+                alert("复制失败，请手动复制芯片位号。");
+            });
+        });
+        function resetSelection() {
+            selectedChips.length = 0;
+            document.querySelectorAll(".chip.selected").forEach(cell => cell.classList.remove("selected"));
+        }
+    </script>
+</body>
+</html>
